@@ -24,6 +24,7 @@ import {
 import { Logo } from "@/components/icons";
 import { useDisclosure } from "@nextui-org/modal";
 import { WalletConnect } from "./walletConnect";
+import { Image } from "@nextui-org/image";
 
 export const Navbar = () => {
   const { onOpen } = useDisclosure();
@@ -56,25 +57,11 @@ export const Navbar = () => {
             className="flex justify-start items-center gap-1"
             color="foreground"
             href="/">
-            <Logo />
-            <h3 className="font-bold text-inherit">LASER PlayGround</h3>
+            
+            <Image src="/logo.png" alt="home" width={150} />
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <Link
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
-                )}
-                color="foreground"
-                href={item.href}>
-                {item.label}
-              </Link>
-            </NavbarItem>
-          ))}
-        </div>
+        
       </NavbarContent>
 
       <NavbarContent

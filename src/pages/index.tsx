@@ -33,6 +33,7 @@ export default function IndexPage() {
     switchNetwork,
     signPsbt,
     pushPsbt,
+    provider
   } = useLaserEyes();
 
   function shortenAddress(address: string) {
@@ -119,14 +120,14 @@ export default function IndexPage() {
       {!connected ? (
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
           <div className="inline-block max-w-lg text-center justify-center">
-            <h1 className={title()}>Make&nbsp;</h1>
-            <h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
+            <h1 className={title()}>An&nbsp;</h1>
+            <h1 className={title({ color: "violet" })}>interactive&nbsp;</h1>
             <br />
             <h1 className={title()}>
-              websites regardless of your design experience.
+              page demonstrating Laser Eyes functionality.
             </h1>
             <h4 className={subtitle({ class: "mt-4" })}>
-              Beautiful, fast and modern React UI library.
+              Beautiful, fast and modern. Click below 👇.
             </h4>
           </div>
 
@@ -146,7 +147,7 @@ export default function IndexPage() {
       ) : (
         <div className="flex flex-col space-y-2">
           <h3 className="text-3xl font-semibold">PlayGround</h3>
-          <p>
+          <p className="text-sm">
             A complete toolkit for connecting wallets to apps, UI components
             that work out of the box, an interactive example page demonstrating
             Laser Eyes functionality.
@@ -161,8 +162,8 @@ export default function IndexPage() {
               <h4 className="font-bold text-large">Frontend Radio</h4> */}
             </CardHeader>
             <CardBody>
-              <div className="flex gap-2">
-                <div className="basis-1/3 flex-col space-y-2">
+              <div className="flex flex-wrap lg:flex-nowrap gap-2">
+                <div className="lg:basis-1/3 flex-col space-y-2">
                   <p className="text-tiny uppercase font-bold">
                     Functionalities
                   </p>
@@ -170,19 +171,19 @@ export default function IndexPage() {
                     <CardBody>
                       <div className="flex flex-col space-y-4">
                         <div className="flex justify-between gap-4">
-                          <Button className="w-full p-8 font-bold bg-[#FF0000]">
+                          <Button className="w-full lg:p-8 font-bold bg-[#FF0000]">
                             Connect Wallet
                           </Button>
                           <Button
                             onPress={disconnect}
-                            className="w-full p-8 font-bold bg-[#FF8E00]">
+                            className="w-full lg:p-8 font-bold bg-[#FF8E00]">
                             Disconnect Wallet
                           </Button>
                         </div>
                         <div className="flex justify-between gap-3">
                           <Button
                             onClick={switchNet}
-                            className="w-full p-8 font-bold bg-[#FFFF00]">
+                            className="w-full lg:p-8 font-bold bg-[#FFFF00]">
                             Switch to{" "}
                             {currentNetwork === "mainnet"
                               ? "Testnet"
@@ -190,26 +191,26 @@ export default function IndexPage() {
                           </Button>
                           <Button
                             onPress={handleSend}
-                            className="w-full p-8 font-bold bg-[#008E00]">
+                            className="w-full lg:p-8 font-bold bg-[#008E00]">
                             Send BTC
                           </Button>
                         </div>
                         <div className="flex justify-between gap-3">
                           <Button
                             onPress={SignMsg}
-                            className="w-full p-8 font-bold bg-[#00C0C0]">
+                            className="w-full lg:p-8 font-bold bg-[#00C0C0]">
                             SignMessage
                           </Button>
                           <Button
                             onPress={handleSignPsbt}
-                            className="w-full p-8 font-bold bg-[#400098]">
+                            className="w-full lg:p-8 font-bold bg-[#400098]">
                             SignPsbt
                           </Button>
                         </div>
                         <div className="flex justify-between gap-3">
                           <Button
                             onPress={handlePushPsbt}
-                            className="w-full p-8 font-bold bg-[#8E008E]">
+                            className="w-full lg:p-8 font-bold bg-[#8E008E]">
                             PushPsbt
                           </Button>
                         </div>
@@ -217,20 +218,20 @@ export default function IndexPage() {
                     </CardBody>
                   </Card>
                 </div>
-                <div className="basis-2/3 w-full space-y-2">
+                <div className="lg:basis-2/3 w-full space-y-2">
                   <div className="flex w-full justify-between">
                     <p className="text-tiny uppercase font-bold">
-                      Wallet : Xverse
+                      Wallet : {provider}
                     </p>
                     <p className="text-tiny uppercase font-bold">
-                      Net : {network}
+                      NetWork : {network}
                     </p>
                   </div>
 
                   <Card>
-                    <CardBody className="flex flex-row justify-center gap-4">
+                    <CardBody className="flex flex-wrap flex-row justify-center gap-4">
                       <div className="flex flex-col items-center justify-center space-y-4 w-fit text-start ring-1 p-4 rounded-md">
-                        <div className="flex w-full gap-4">
+                        <div className="flex flex-wrap lg:flex-nowrap w-full gap-4">
                           <div className="flex flex-col cursor-point">
                             <p>Address (Tap Root)</p>
 
@@ -259,7 +260,7 @@ export default function IndexPage() {
                             />
                           </div>
                         </div>
-                        <div className="flex w-full gap-4">
+                        <div className="flex flex-wrap lg:flex-nowrap w-full gap-4">
                           <div className="flex flex-col cursor-point">
                             <p>Public Key</p>
                             <Input
@@ -307,7 +308,7 @@ export default function IndexPage() {
                             />
                           </div>
                         </div>
-                        <div className="flex w-full gap-4">
+                        <div className="flex flex-wrap lg:flex-nowrap w-full gap-4">
                           <div className="flex flex-col cursor-point">
                             <p>Unsigned PSBT</p>
                             <Input

@@ -36,7 +36,7 @@ const WalletDetails = ({
   address,
   activeWallet,
 }: WalletDetailsProps) => {
-  const { disconnect, paymentAddress,  switchNetwork, } = useLaserEyes();
+  const { disconnect, paymentAddress, switchNetwork, network } = useLaserEyes();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [addr, setAddr] = useState<boolean>(true);
   const [currentView, setCurrentView] = useState("main");
@@ -80,7 +80,7 @@ const WalletDetails = ({
 
         <p className="text-default-500 text-sm text-center">
           {" "}
-          ${balance}.00 BTC
+          {balance}.00 {network === "mainnet" ?  "BTC" : "tBTC" }
         </p>
       </div>
 
@@ -205,7 +205,9 @@ const WalletDetails = ({
         <Image src={`Icon.svg`} alt="walletImg" width={40} />
         <div className="flex flex-col font-medium">
           {shortenAddress(address)}
-          <p className="text-default-500">{balance}.00 BTC</p>
+          <p className="text-default-500">
+            {balance}.00 {network === "mainnet" ? "BTC" : "tBTC"}
+          </p>
         </div>
         <Modal
           className="bg-default-50"
