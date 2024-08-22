@@ -1,7 +1,9 @@
-import React, { FC, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Image } from "@nextui-org/image";
 import { Button } from "@nextui-org/button";
+
 import { HeartFilledIcon } from "@/components/icons";
+
 import { Chip } from "@nextui-org/chip";
 import { LuDownload } from "react-icons/lu";
 import {
@@ -10,13 +12,11 @@ import {
   UNISAT,
   UnisatLogo,
   OKX,
-  LEATHER,
   MAGIC_EDEN,
   OYL,
   PHANTOM,
   WIZZ,
   XverseLogo,
-  LeatherLogo,
   MagicEdenLogo,
   OylLogo,
   PhantomLogo,
@@ -27,7 +27,6 @@ import {
   Modal,
   ModalBody,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/modal";
@@ -38,6 +37,7 @@ interface WalletItemProps {
     icon: string | React.FC;
     connectMethod: any;
     hasWallet: boolean;
+    url: string;
   };
   onConnect: (wallet: WalletItemProps["wallet"]) => void;
   isSelected: boolean;
@@ -55,22 +55,28 @@ const WalletItem: React.FC<WalletItemProps> = React.memo(
 
     return (
       <li
-        onClick={() => onConnect(wallet)}
+        onClick={() =>  onConnect(wallet)}
         className={`flex justify-between items-center font-medium p-2 shadow-sm rounded-lg cursor-pointer hover:ring-1 transition-transform duration-200 ease-in-out transform ${
           isSelected ? "scale-95" : "hover:scale-105"
         }`}>
-        <div className="flex justify-start items-center gap-2">
+           
+           <div className="flex justify-start items-center gap-2">
           {renderIcon(wallet.icon)} {wallet.name}
         </div>
         {!wallet.hasWallet && (
-          <Chip
+          <a href={wallet.url}  >
+            <Chip
             color="default"
             variant="shadow"
             className="text-sm p-2"
             endContent={<LuDownload />}>
             Get Wallet
           </Chip>
+          </a>
+          
         )}
+          
+        
       </li>
     );
   }
@@ -106,29 +112,32 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({
         icon: XverseLogo,
         connectMethod: XVERSE,
         hasWallet: hasXverse,
+        url: "https://chromewebstore.google.com/detail/xverse-wallet/idnnbdplmphpflfnlkomgpfbpcgelopg?pli=1",
       },
       {
         name: "Unisat",
         icon: UnisatLogo,
         connectMethod: UNISAT,
         hasWallet: hasUnisat,
+        url: "https://chromewebstore.google.com/detail/unisat-wallet/ppbibelpcjmhbdihakflkdcoccbgbkpo",
       },
-      
       {
         name: "Magic Eden",
         icon: MagicEdenLogo,
         connectMethod: MAGIC_EDEN,
         hasWallet: hasMagicEden,
+        url: "https://chromewebstore.google.com/detail/magic-eden-wallet/mkpegjkblkkefacfnmkajcjmabijhclg",
       },
-      { name: "OKX", icon: OkxLogo, connectMethod: OKX, hasWallet: hasOkx },
-      { name: "OYL", icon: OylLogo, connectMethod: OYL, hasWallet: hasOyl },
+      { name: "OKX", icon: OkxLogo, connectMethod: OKX, hasWallet: hasOkx, url:"https://chromewebstore.google.com/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge", },
+      { name: "OYL", icon: OylLogo, connectMethod: OYL, hasWallet: hasOyl, url: "https://chromewebstore.google.com/detail/oyl-wallet-bitcoin-ordina/ilolmnhjbbggkmopnemiphomhaojndmb", },
       {
         name: "Phantom",
         icon: PhantomLogo,
         connectMethod: PHANTOM,
         hasWallet: hasPhantom,
+        url: "https://chromewebstore.google.com/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa",
       },
-      { name: "Wizz", icon: WizzLogo, connectMethod: WIZZ, hasWallet: hasWizz },
+      { name: "Wizz", icon: WizzLogo, connectMethod: WIZZ, hasWallet: hasWizz, url: "https://chromewebstore.google.com/detail/wizz-wallet/ghlmndacnhlaekppcllcpcjjjomjkjpg", },
     ],
     [
       hasXverse,
