@@ -292,7 +292,10 @@ export default function IndexPage() {
                         <div className="flex flex-col justify-center items-center w-full gap-4">
                           <div className=" flex-col">
                             <p>Balance</p>
-                            <div>{balance}.00 BTC</div>
+                            <div>
+                              {balance}.00{" "}
+                              {network === "mainnet" ? "BTC" : "tBTC"}
+                            </div>
                           </div>
                           <div className="text-center flex flex-col">
                             <p>Signature</p>
