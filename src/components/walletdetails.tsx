@@ -34,7 +34,6 @@ interface WalletDetailsProps {
 const WalletDetails = ({
   balance,
   address,
-  activeWallet,
 }: WalletDetailsProps) => {
   const { disconnect, paymentAddress, switchNetwork, network } = useLaserEyes();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -214,13 +213,11 @@ const WalletDetails = ({
           isOpen={isOpen}
           onOpenChange={onOpenChange}>
           <ModalContent>
-            {(onClose) => (
               <ModalBody>
                 {currentView === "main" && <MainView />}
                 {currentView === "transaction" && <TransactionView />}
                 {currentView === "tokens" && <TokensView />}
               </ModalBody>
-            )}
           </ModalContent>
         </Modal>
       </div>

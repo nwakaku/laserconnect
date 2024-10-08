@@ -1,6 +1,5 @@
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code";
-import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 
@@ -21,7 +20,6 @@ export default function IndexPage() {
   const {
     connected,
     address,
-    connect,
     paymentAddress,
     publicKey,
     paymentPublicKey,

@@ -174,7 +174,7 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({
       </Button>
       <Modal size="3xl" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
-          {(onClose) => (
+          
             <>
               <ModalHeader className="flex flex-col gap-1">
                 Choose a wallet
@@ -250,7 +250,7 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({
                 </div>
               </ModalBody>
             </>
-          )}
+         
         </ModalContent>
       </Modal>
     </div>

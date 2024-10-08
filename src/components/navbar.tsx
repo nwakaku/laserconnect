@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
@@ -8,23 +7,15 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/navbar";
-import { link as linkStyles } from "@nextui-org/theme";
-import clsx from "clsx";
 
-import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
-  GithubIcon,
-  HeartFilledIcon,
   SearchIcon,
 } from "@/components/icons";
-import { Logo } from "@/components/icons";
-import { useDisclosure } from "@nextui-org/modal";
 import { WalletConnect } from "./walletConnect";
 import { Image } from "@nextui-org/image";
 
 export const Navbar = () => {
-  const { onOpen } = useDisclosure();
   const searchInput = (
     <Input
       aria-label="Search"
